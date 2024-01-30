@@ -5,8 +5,8 @@ let mainWindow;
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920, // Set the width to 4K resolution
+    height: 1080, // Set the height to 4K resolution
     webPreferences: {
       nodeIntegration: true,
       contextIsolation: false,
@@ -19,6 +19,18 @@ function createWindow() {
   mainWindow.on('closed', function () {
     mainWindow = null;
   });
+
+  //mainWindow.webContents.on('did-finish-load', () => {
+    // Enter fullscreen mode
+   // mainWindow.webContents.executeJavaScript(`
+    //  const video = document.querySelector('video');
+    //  if (video) {
+     //   video.requestFullscreen();
+      //  video.style.width = '90%';
+      //  video.style.height = '90%';
+     // }
+   // `);
+ // });
 }
 
 app.whenReady().then(createWindow);
@@ -30,4 +42,3 @@ app.on('window-all-closed', function () {
 app.on('activate', function () {
   if (mainWindow === null) createWindow();
 });
-
